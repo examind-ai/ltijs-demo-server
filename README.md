@@ -50,9 +50,9 @@ _mongosh documentation: https://www.mongodb.com/basics/create-database_
 
   _DB_USER and DB_PASS are not required_
 
-- Run `npm install`
+- Run (macOS / Linux) `npm start`
 
-- Run `npm start`
+- Run (Windows) `npm run start:win`
 
 ### React application
 
