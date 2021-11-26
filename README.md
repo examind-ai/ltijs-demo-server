@@ -9,6 +9,31 @@
 
 > Ltijs v5 demo server
 
+### Set up MongoDB
+
+```
+docker pull mongo
+docker run --name ltijs-demo-server-mongo -p 27017:27017 -d mongo:latest
+```
+
+Create `ltidb` database:
+
+```
+docker exec -it ltijs-demo-server-mongo bash
+```
+
+Inside the container:
+
+```
+mongosh
+show dbs
+use ltidb
+db.widget.insertOne({name: 'Foo'})
+show dbs
+```
+
+_mongosh documentation: https://www.mongodb.com/basics/create-database_
+
 ### Usage
 
 - Download or clone the repo
