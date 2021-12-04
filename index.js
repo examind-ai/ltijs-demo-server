@@ -26,11 +26,19 @@ lti.setup(
       sameSite: '', // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
     },
     devMode: true, // Set DevMode to true if the testing platform is in a different domain and https is not being used
+    // ltiaas: true // Disables cookie validation
   },
 );
 
 // When receiving successful LTI launch redirects to app
 lti.onConnect(async (token, req, res) => {
+  console.log(
+    'req.query',
+    req.query,
+    token.platformId,
+    token.user,
+    token.userInfo,
+  );
   return res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
