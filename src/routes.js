@@ -86,16 +86,16 @@ router.post('/deeplink', async (req, res) => {
 router.get('/resources', async (req, res) => {
   const resources = [
     {
-      name: 'Resource1',
-      value: 'value1'
+      name: 'EXAMIND Assessment 1',
+      value: 'Quiz 1'
     },
     {
-      name: 'Resource2',
-      value: 'value2'
+      name: 'EXAMIND Assessment 2',
+      value: 'Quiz 2'
     },
     {
-      name: 'Resource3',
-      value: 'value3'
+      name: 'EXAMIND Assessment 3',
+      value: 'Quiz 3'
     }
   ]
   return res.send(resources)

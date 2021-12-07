@@ -44,7 +44,9 @@ lti.onConnect(async (token, req, res) => {
 
 // When receiving deep linking request redirects to deep screen
 lti.onDeepLinking(async (token, req, res) => {
-  return lti.redirect(res, '/deeplink', { newResource: true });
+  return lti.redirect(res, '/deeplink?assessmentId=123', {
+    newResource: true,
+  });
 });
 
 // Setting up routes
