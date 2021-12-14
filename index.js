@@ -26,7 +26,16 @@ lti.setup(
       sameSite: '', // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
     },
     devMode: true, // Set DevMode to true if the testing platform is in a different domain and https is not being used
-    // ltiaas: true // Disables cookie validation
+    // ltiaas: true, // Disables cookie validation (set this to true when using LTIJS as a middleware)
+    dynReg: {
+      url: 'http://localhost:3000/', // Tool Provider URL. Required field.
+      name: 'LTI Demo Server', // Tool Provider name. Required field.
+      // logo: 'http://tool.example.com/assets/logo.svg', // Tool Provider logo URL.
+      description: 'Tool Description', // Tool Provider description.
+      // redirectUris: ['http://tool.example.com/launch'], // Additional redirection URLs. The main URL is added by default.
+      // customParameters: { key: 'value' }, // Custom parameters.
+      autoActivate: true, // Whether or not dynamically registered Platforms should be automatically activated. Defaults to false.
+    },
   },
 );
 
@@ -47,6 +56,37 @@ lti.onDeepLinking(async (token, req, res) => {
   return lti.redirect(res, '/deeplink?assessmentId=123', {
     newResource: true,
   });
+});
+
+lti.onDynamicRegistration(async (req, res, next) => {
+  try {
+    if (!req.query.openid_configuration)
+      return res.status(400).send({
+        status: 400,
+        error: 'Bad Request',
+        details: {
+          message: 'Missing parameter: "openid_configuration".',
+        },
+      });
+    const message = await lti.DynamicRegistration.register(
+      req.query.openid_configuration,
+      req.query.registration_token,
+    );
+    res.setHeader('Content-type', 'text/html');
+    res.send(message);
+  } catch (err) {
+    if (err.message === 'PLATFORM_ALREADY_REGISTERED')
+      return res.status(403).send({
+        status: 403,
+        error: 'Forbidden',
+        details: { message: 'Platform already registered.' },
+      });
+    return res.status(500).send({
+      status: 500,
+      error: 'Internal Server Error',
+      details: { message: err.message },
+    });
+  }
 });
 
 // Setting up routes
