@@ -9,11 +9,7 @@ lti.setup(
   process.env.LTI_KEY,
   {
     url:
-      'mongodb://' +
-      process.env.DB_HOST +
-      '/' +
-      process.env.DB_NAME +
-      '?authSource=admin',
+      'mongodb://' + process.env.DB_HOST + '/' + process.env.DB_NAME,
     connection: {
       user: process.env.DB_USER,
       pass: process.env.DB_PASS,
