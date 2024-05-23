@@ -5,7 +5,6 @@
   <a href="https://site.imsglobal.org/certifications/coursekey/ltijs"​ target='_blank'><img width="80" src="https://www.imsglobal.org/sites/default/files/IMSconformancelogoREG.png" alt="IMS Global Certified" border="0"></img></a>
 </div>
 
-
 # Ltijs Demo Server
 
 > Ltijs v5 demo server
@@ -23,12 +22,13 @@
   DB_PASS=pass
   LTI_KEY=LTIKEY
   ```
-  *DB_USER and DB_PASS are not required*
+
+  _DB_USER and DB_PASS are not required_
 
 - Run `npm install`
 
-- Run `npm start` 
+- Run `npm start`
 
 ### React application
 
- The code for the react application used with this project can be found [here](https://github.com/Cvmcosta/ltijs-demo-client).
+The code for the react application used with this project can be found [here](https://github.com/Cvmcosta/ltijs-demo-client).
