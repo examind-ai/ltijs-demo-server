@@ -67,6 +67,20 @@ const setup = async () => {
     accesstokenEndpoint: 'http://localhost/moodle/mod/lti/token.php',
     authConfig: { method: 'JWK_SET', key: 'http://localhost/moodle/mod/lti/certs.php' }
   }) */
+
+  await lti.registerPlatform({
+    url: 'https://canvas.instructure.com',
+    name: 'Canvas LMS',
+    clientId: '10000000000001',
+    authenticationEndpoint:
+      'https://canvas.examind.io/api/lti/authorize_redirect',
+    accesstokenEndpoint:
+      'https://canvas.examind.io/login/oauth2/token',
+    authConfig: {
+      method: 'JWK_SET',
+      key: 'https://canvas.examind.io/api/lti/security/jwks',
+    },
+  });
 };
 
 setup();
