@@ -66,7 +66,7 @@ router.post('/deeplink', async (req, res) => {
     const items = {
       type: 'ltiResourceLink',
       title: resource.value,
-      url: 'http://localhost:3000/?resource=1&hash=hash', // Recommend using query param and not custom data, as some LMS (e.g. Canvas) doesn't support custom data
+      url: 'https://lti-demo-server.ngrok.io/?resource=1&hash=hash', // Recommend using query param and not custom data, as some LMS (e.g. Canvas) doesn't support custom data
       custom: {
         name: resource.name,
         value: resource.value

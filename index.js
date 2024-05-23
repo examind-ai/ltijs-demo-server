@@ -28,7 +28,8 @@ lti.setup(
     devMode: true, // Set DevMode to true if the testing platform is in a different domain and https is not being used
     // ltiaas: true, // Disables cookie validation (set this to true when using LTIJS as a middleware)
     dynReg: {
-      url: 'http://localhost:3000/', // Tool Provider URL. Required field.
+      // Register tool in Moodle with https://lti-demo-server.ngrok.io/register
+      url: 'https://lti-demo-server.ngrok.io/', // Tool Provider URL. Required field.
       name: 'LTI Demo Server', // Tool Provider name. Required field.
       // logo: 'http://tool.example.com/assets/logo.svg', // Tool Provider logo URL.
       description: 'Tool Description', // Tool Provider description.
